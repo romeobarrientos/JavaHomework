@@ -1,6 +1,9 @@
 public class Library {
     // Add the missing implementation to this class
     
+    public Library(String string) {
+    }
+
     public String printAddress(){
         return "Pickle";
     }
@@ -9,11 +12,15 @@ public class Library {
         return "";
     }
 
-    public String printOpeningHours(){
+    public static String printOpeningHours(){
         return "Libraries are open daily from 9am to 5pm";
     }
 
-    public 
+    public void returnBook(String string) {
+    }
+
+    public void borrowBook(String string) {
+    }
 
     public static void main(String[] args) {
         // Create two libraries
@@ -60,5 +67,7 @@ public class Library {
         System.out.println("Books available in the first library:");
         firstLibrary.printAvailableBooks();
     }
+
+   
 
 }
