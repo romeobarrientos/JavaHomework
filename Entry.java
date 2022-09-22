@@ -1,7 +1,7 @@
 public class Entry {
     private String firstName;
     private String lastName;
-    private int phoneNumber;
+    private long phoneNumber;
     private String emailAddress;
 
     // Setters
@@ -30,7 +30,7 @@ public class Entry {
         return lastName;
     }
 
-    public int getPhoneNumber(){
+    public long getPhoneNumber(){
         return phoneNumber;
     }
 
@@ -46,17 +46,17 @@ public class Entry {
         emailAddress = "";
     }
 
-    public Entry(String first, String last, int phone, String email){
+    public Entry(String first, String last, long phoneNumber2, String email){
         firstName = first;
         lastName = last;
-        phoneNumber = phone;
+        phoneNumber = phoneNumber2;
         emailAddress = email;
     }
 
     public String toString(){
         String result;
         result = "\n************" + "\nFirst Name: " + firstName + "\nLast Name: " + lastName + "\nPhone Number: "
-         + phoneNumber + "\nEmail: " + emailAddress + "\n************\n";
+         + phoneNumber + "\nEmail: " + emailAddress + "\n\n************\n";
          return result;
     }
 }

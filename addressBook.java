@@ -51,14 +51,14 @@ public class addressBook {
             String lastName = scan.next();
             // Get phone number
             System.out.println("Phone number: ");
-            int phoneNumber = scan.nextInt();
+            long phoneNumber = scan.nextLong();
             // Get emailAddress address
             System.out.print("Email Address: ");
             String emailAddress = scan.next();
             //Create new entry in addressbook
             Entry entry = new Entry(firstName, lastName, phoneNumber, emailAddress);
             addressBook.add(entry);
-            System.out.println("Added entry!");
+            System.out.println("Added entry!\n");
             return addressBook;
         }
         // Remove an entry by email address
@@ -69,7 +69,7 @@ public class addressBook {
                 // For loop that passes through address book and compares each entry to user input
                 for(int i = 0; i < addressBook.size(); i++){
                     if(addressBook.get(i).getEmail() == emailAddress){
-                        System.out.println("Deleted the following entry: ")
+                        System.out.println("Deleted the following entry: ");
                         System.out.print(addressBook.get(i).toString() + "\n");
                         addressBook.remove(i);
                     }
@@ -82,36 +82,68 @@ public class addressBook {
             // Search address book entries
         public static ArrayList<Entry> entrySearch(ArrayList<Entry> addressBook){
             try (Scanner scan = new Scanner(System.in)) {
-                System.out.println("Which entry method would you like to search by?");
-                System.out.print("1) First name");
+                System.out.println("\nWhich entry method would you like to search by?");
+                System.out.println("1) First name");
                 System.out.println("2) Last name");
                 System.out.println("3) Email Address");
                 System.out.println("4) Phone Number");
                 int entryMethod = scan.nextInt();
+                int invalidCheck = 0;
                     switch(entryMethod){
                         case 1:
-                            System.out.println("Enter the first name: ");
+                            System.out.print("Enter the first name: ");
                             String searchFirst = scan.next();
+                            for(int i = 0; i < addressBook.size(); i++){
+                                if(addressBook.get(i).getFirstName().contains(searchFirst)){
+                                    System.out.print(addressBook.get(i).toString());
+                                    invalidCheck++;
+                                } 
+                            }
+                            return addressBook;
                             
-                            break;
                         case 2: 
-                            System.out.println("Enter the last name: ");
+                            System.out.print("Enter the last name: ");
                             String searchLast= scan.next();
-                            break;
+                            for(int i = 0; i < addressBook.size(); i++){
+                                if(addressBook.get(i).getLastName().contains(searchLast)){
+                                    System.out.print(addressBook.get(i).toString());
+                                    invalidCheck++;
+                                }
+                            }
+                                return addressBook;
+                         
                         case 3:
-                            System.out.println("Enter the email address: ");
+                            System.out.print("Enter the email address: ");
                             String searchEmail = scan.next();
-
-                            break;
+                            for(int i = 0; i < addressBook.size(); i++){
+                                if(addressBook.get(i).getEmail().contains(searchEmail)){
+                                    System.out.print(addressBook.get(i).toString());
+                                    invalidCheck++;
+                                }
+                            }
+                                return addressBook;
+                           
                         case 4:
-                            System.out.println("Enter a phone number: ");
-                            int searchPhone = scan.nextInt();
-                            break;
+                            System.out.print("Enter a phone number: ");
+                            String searchPhone = scan.next();
+                            
+                            for(int i = 0; i < addressBook.size(); i++){
+                                String phoneString = String.valueOf(addressBook.get(i).getPhoneNumber());
+                                if(phoneString.contains(searchPhone) == true){
+                                    System.out.print(addressBook.get(i).toString());
+                                    invalidCheck++;
+                                }
+                            }
+                            if(invalidCheck == 0){
+                                System.out.println("\nEntry not found!\n");
+                            }
+                                return addressBook;
                         default:
                             System.out.println("This is not a valid input, please try again.");
+                            return addressBook;
                     }
             }
-            return addressBook;
+            
         }
         // Print the address book to console
         public static ArrayList<Entry> printBook(ArrayList<Entry> addressBook){
@@ -129,6 +161,7 @@ public class addressBook {
     //Delete the address book
     public static ArrayList<Entry> deleteBook(ArrayList<Entry> addressBook){
         addressBook.clear();
+        System.out.println("Address book cleared!");
         return addressBook;
         
     }
