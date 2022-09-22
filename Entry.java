@@ -4,59 +4,76 @@ public class Entry {
     private long phoneNumber;
     private String emailAddress;
 
-    // Setters
-    public void setFirstName(String name){
-        firstName = name;
+    public Entry() {
+        
     }
 
-    public void setLastName(String name){
-        lastName = name;
-    }
-    
-    public void setPhoneNumber(int num){
-        phoneNumber = num;
+
+    public Entry(String firstName, String lastName, long phoneNumber, String emailAddress) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.emailAddress = emailAddress;
     }
 
-    public void setEmailAddress(String email){
-        emailAddress= email;
-    }
-
-    // Getters
-    public String getFirstName(){
+    //getters
+    public String getFirstName() {
         return firstName;
     }
 
-    public String getLastName(){
+
+
+
+    public String getLastName() {
         return lastName;
     }
 
-    public long getPhoneNumber(){
+
+
+
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public String getEmail(){
+
+
+
+    public String getEmailAddress() {
         return emailAddress;
     }
 
-    // Constructors
-    public Entry(){
-        firstName = "";
-        lastName = "";
-        phoneNumber = 0;
-        emailAddress = "";
+
+
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public Entry(String first, String last, long phoneNumber2, String email){
-        firstName = first;
-        lastName = last;
-        phoneNumber = phoneNumber2;
-        emailAddress = email;
+
+
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
+
+
+
+
+    public void setPhoneNumber(long phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+
+
 
     public String toString(){
         String result;
         result = "\n************" + "\nFirst Name: " + firstName + "\nLast Name: " + lastName + "\nPhone Number: "
-         + phoneNumber + "\nEmail: " + emailAddress + "\n\n************\n";
+         + phoneNumber + "\nEmail: " + emailAddress + "\n************\n";
          return result;
     }
 }
