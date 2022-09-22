@@ -31,7 +31,7 @@ public class addressBook {
                     case 5:
                         addressMenu(deleteBook(addressBook));
                     case 6:
-                        System.out.println("Thanks for using the address book, have a nice day!");
+                        System.out.println("\nThanks for using the address book, have a nice day!");
                         System.exit(0);
                     default:
                         System.out.println("Sorry, this is not a valid input! Try again.");
@@ -55,18 +55,27 @@ public class addressBook {
             // Get emailAddress address
             System.out.print("Email Address: ");
             String emailAddress = scan.next();
-
+            //Create new entry in addressbook
             Entry entry = new Entry(firstName, lastName, phoneNumber, emailAddress);
             addressBook.add(entry);
             System.out.println("Added entry!");
-
             return addressBook;
         }
-
+        // Remove an entry by email address
         public static ArrayList<Entry> removeEntry(ArrayList<Entry> addressBook){
             try (Scanner scan = new Scanner(System.in)) {
                 System.out.println("Enter the email address: ");
                 String emailAddress = scan.next();
+                // For loop that passes through address book and compares each entry to user input
+                for(int i = 0; i < addressBook.size(); i++){
+                    if(addressBook.get(i).getEmail() == emailAddress){
+                        System.out.println("Deleted the following entry: ")
+                        System.out.print(addressBook.get(i).toString() + "\n");
+                        addressBook.remove(i);
+                    }
+                }
+                
+
             }
             return addressBook;
         }
@@ -82,15 +91,21 @@ public class addressBook {
                     switch(entryMethod){
                         case 1:
                             System.out.println("Enter the first name: ");
+                            String searchFirst = scan.next();
+                            
                             break;
                         case 2: 
                             System.out.println("Enter the last name: ");
+                            String searchLast= scan.next();
                             break;
                         case 3:
                             System.out.println("Enter the email address: ");
+                            String searchEmail = scan.next();
+
                             break;
                         case 4:
                             System.out.println("Enter a phone number: ");
+                            int searchPhone = scan.nextInt();
                             break;
                         default:
                             System.out.println("This is not a valid input, please try again.");
@@ -101,7 +116,7 @@ public class addressBook {
         // Print the address book to console
         public static ArrayList<Entry> printBook(ArrayList<Entry> addressBook){
             if(addressBook.isEmpty()){
-                System.out.println("The Address Book is empty!");
+                System.out.println("\nThe Address Book is empty!");
                 return addressBook;
             }
             else{
