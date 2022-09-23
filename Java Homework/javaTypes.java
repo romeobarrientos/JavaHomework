@@ -2,6 +2,7 @@
 //Date: 08/13/2022
 //Description: 
 // A project that tests java data types, variables and branching incorrectly
+/*
 public class javaTypes {
 
 public static void main(String[] args){
@@ -33,3 +34,4 @@ public static void main(String[] args){
     
 
 }
+ */

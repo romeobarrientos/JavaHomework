@@ -1,4 +1,3 @@
-import java.util.Map;
 import java.util.Scanner;
 import java.util.ArrayList;
 public class addressBook {
@@ -11,13 +10,13 @@ public class addressBook {
     }
     public static void addressMenu(ArrayList<Entry> addressBook){
          Scanner scan = new Scanner(System.in);
-
+            System.out.println("What would you like to do?");
             System.out.println("1) Add an entry");
             System.out.println("2) Remove an entry");
             System.out.println("3) Search for a specific entry");
             System.out.println("4) Print Address Book");
             System.out.println("5) Delete Book");
-            System.out.println("6) Quit Program");
+            System.out.println("6) Quit Program\n");
             System.out.println("Please choose what you'd like to do with the database: ");
             int choice = scan.nextInt();
 
@@ -41,7 +40,6 @@ public class addressBook {
                     System.out.println("\nThanks for using the address book, have a nice day!");
                     running = false;
                     break;
-                    //System.exit(0);
                 default:
                     System.out.println("Sorry, this is not a valid input! Try again.");
                     addressMenu(addressBook);
@@ -52,22 +50,32 @@ public class addressBook {
 
     public static ArrayList<Entry> addEntry(ArrayList<Entry> addressBook){
         Scanner scan = new Scanner(System.in);
+        
         // Get first name
         System.out.print("First name: ");
         String firstName = scan.next();
+
         // Get last name
         System.out.print("Last Name: ");
         String lastName = scan.next();
+
         // Get phone number
         System.out.println("Phone number: ");
+        while (!scan.hasNextLong()) {
+            System.out.println("Please enter a valid phone number: ");
+            scan.nextLine();
+          }
         long phoneNumber = scan.nextLong();
-        // Get emailAddress address
+
+        // Get emailAddress 
         System.out.print("Email Address: ");
         String emailAddress = scan.next();
+
         //Create new entry in addressbook
         Entry entry = new Entry(firstName, lastName, phoneNumber, emailAddress);
         addressBook.add(entry);
         System.out.println("Added entry!\n");
+        scan.close();
         return addressBook;
     }
     // Remove an entry by email address
